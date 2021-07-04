@@ -46,7 +46,7 @@ public class Supermercado {
             System.out.println("Programa finalizado");
         }catch (Exception e) {
             //e.printStackTrace();
-            System.out.println("Error ao cadastrador o produto!");
+            System.out.println("Error ao cadastrar o produto!");
         }
     }
 
@@ -60,7 +60,7 @@ public class Supermercado {
             s.cadastrarProduto(p2);
             s.cadastrarProduto(p3);
             System.out.println("==================");
-            s.removerProduto(p3);
+            //s.removerProduto(p3);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
