@@ -27,7 +27,7 @@ public class ServidorImple extends UnicastRemoteObject implements Servidor {
             produtos.put(produto.getNome(), produtosPorPreco);
         }
 
-        System.out.println(produtos);
+        //System.out.println(produtos);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ServidorImple extends UnicastRemoteObject implements Servidor {
                 produtos.remove(produto.getNome());
             }
         }
-        System.out.println(produtos);
+        //System.out.println(produtos);
     }
 
     @Override

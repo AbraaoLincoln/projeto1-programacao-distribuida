@@ -8,8 +8,8 @@ public class Supermercado {
     public static void main(String[] args) {
 
         try{
-            //Servidor s = (Servidor) Naming.lookup("ServidorProdutos");
-            ServidorImple s = new ServidorImple();
+            Servidor s = (Servidor) Naming.lookup("ServidorProdutos");
+            //ServidorImple s = new ServidorImple();
             //Supermercado.cadrastraProdutos(s);
             Scanner sc = new Scanner(System.in);
             String input = "0";
@@ -51,9 +51,9 @@ public class Supermercado {
     }
 
     public static void cadrastraProdutos(Servidor s) {
-        Produto p1 = new Produto("S-A", "produto-a", 2);
-        Produto p2 = new Produto("S-B", "produto-b", 1);
-        Produto p3 = new Produto("S-C", "produto-b", 3);
+        Produto p1 = new Produto("SA", "produto-a", 2);
+        Produto p2 = new Produto("SB", "produto-b", 1);
+        Produto p3 = new Produto("SC", "produto-b", 3);
 
         try {
             s.cadastrarProduto(p1);

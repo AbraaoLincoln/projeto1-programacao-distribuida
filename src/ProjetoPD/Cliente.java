@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class Cliente {
     public static void main(String[] args) {
         try{
-            //Servidor s = (Servidor) Naming.lookup("ServidorProdutos");
-            ServidorImple s = new ServidorImple();
+            Servidor s = (Servidor) Naming.lookup("ServidorProdutos");
+            //ServidorImple s = new ServidorImple();
             Supermercado.cadrastraProdutos(s);
             Scanner sc = new Scanner(System.in);
             String input = "0";
@@ -31,7 +31,7 @@ public class Cliente {
                 Map<String, ArrayList<Produto>> resultadoConsulta = s.consultarProdutos(produtos);
                 Cliente.showResultado(produtos, resultadoConsulta);
 
-                System.out.println("Deseja adiconar mais produtos ?");
+                System.out.println("Deseja fazer outra consulta ?");
                 System.out.println("0 - nao | 1 - sim");
                 input = sc.nextLine();
             }while (!input.equals("0"));
@@ -43,17 +43,26 @@ public class Cliente {
     }
 
     public static void showResultado(List<String> produtos, Map<String, ArrayList<Produto>> resultado) {
-        System.out.println("Produto | Melhor Preco | Supermercados Consultado");
+        System.out.println("===============================");
+        System.out.println(" =   Resultado da Consulta   = ");
+        System.out.println("===============================");
         for(String nomeProduto : produtos) {
-            List<Produto> listaProdutos = resultado.get(nomeProduto);
-            System.out.print(nomeProduto + " ");
-            System.out.print(listaProdutos.get(0).getPreco() + " ");
+            if(resultado.containsKey(nomeProduto)) {
+                List<Produto> listaProdutos = resultado.get(nomeProduto);
+                String supermercados = "";
 
-            for(Produto p : listaProdutos) {
-                System.out.print(p.getSupermercado() + ", ");
+                for(Produto p : listaProdutos) {
+                    supermercados += p.getSupermercado() + ", ";
+                }
+
+                System.out.println("Produto: " + nomeProduto);
+                System.out.println("Melhor preco: " + listaProdutos.get(0).getPreco());
+                System.out.println("Supermercados consultados: " + supermercados);
+            }else {
+                System.out.println("Nada foi encontado para o produto " + nomeProduto);
             }
 
-            System.out.println();
+            System.out.println("-------------------------------");
         }
     }
 
